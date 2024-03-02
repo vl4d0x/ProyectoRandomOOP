@@ -9,5 +9,7 @@ package test;
  * @author jvlad
  */
 public class ClaseRandom {
-    
+    public void get(){
+        System.out.println("jijija");
+    }
 }

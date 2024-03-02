@@ -1,18 +1,24 @@
-package net.util;
+package net.camionesdonerik.util;
 
-public class DynamicMatrix {
+import net.camionesdonerik.model.Pasajero;
 
-    private Object matrix[][];
+public class PasajerosListWithArray {
+
+    private Pasajero matrix[][];
     private int sizeRow;
     private int sizeColumn;
 
-    public DynamicMatrix() {
-        matrix = new Object[1][1];
+    public PasajerosListWithArray() {
+        matrix = new Pasajero[1][1];
         sizeRow = 1;
         sizeColumn = 1;
     }
+    
+    public Pasajero[][] getMatrix(){
+        return matrix;
+    }
 
-    public void addElement(int row, int col, Object object) {
+    public void addElement(int row, int col, Pasajero pasajero) {
         while (row >= sizeRow) {
             doubleRow(row);
         }
@@ -21,14 +27,14 @@ public class DynamicMatrix {
         }
 
         if (matrix[row][col] == null) {
-            matrix[row][col] = object;
+            matrix[row][col] = pasajero;
         }
 
     }
 
     private void doubleRow(int row) {
-        Object temporalMatrix[][] = null;
-        temporalMatrix = new Object[sizeRow * 2][sizeColumn];
+        Pasajero temporalMatrix[][] = null;
+        temporalMatrix = new Pasajero[sizeRow * 2][sizeColumn];
 
         for (int i = 0; i < sizeRow; i++) {
             for (int j = 0; j < sizeColumn; j++) {
@@ -41,8 +47,8 @@ public class DynamicMatrix {
     }
 
     private void doubleColumn(int col) {
-        Object temporalMatrix[][] = null;
-        temporalMatrix = new Object[sizeRow][sizeColumn * 2];
+        Pasajero temporalMatrix[][] = null;
+        temporalMatrix = new Pasajero[sizeRow][sizeColumn * 2];
 
         for (int i = 0; i < sizeRow; i++) {
             for (int j = 0; j < sizeColumn; j++) {
@@ -53,4 +59,6 @@ public class DynamicMatrix {
         matrix = temporalMatrix;
         sizeColumn *= 2;
     }
+    
+    
 }
